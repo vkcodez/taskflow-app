@@ -132,4 +132,4 @@ npm run build   # production build
 
 ## License
 
-MIT © 2026 [Your Name](https://github.com/vkcodez)
+MIT © 2026 vkcodez
