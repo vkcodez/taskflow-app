@@ -125,7 +125,7 @@ webapp/
     ├── pages/         # Login, Register, Dashboard, Profile
     ├── services/      # Axios API calls
     └── utils/         # Form validators
->>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
+
 ```
 
 ---
@@ -143,7 +143,7 @@ npm run dev     # Vite dev server
 npm run build  # production build
 =======
 npm run build   # production build
->>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
+
 ```
 
 ---
@@ -154,4 +154,4 @@ npm run build   # production build
 MIT © 2026 [Your Name](https://github.com/vkcodez)
 =======
 MIT © 2026 vkcodez
->>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
+
