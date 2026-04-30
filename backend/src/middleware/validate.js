@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { validationResult } = require('express-validator');
 const { sendError } = require('../Utils/apiResponse');
 
@@ -10,4 +11,18 @@ const validate = (req, res, next) => {
   next();
 };
 
+=======
+const { validationResult } = require('express-validator');
+const { sendError } = require('../Utils/apiResponse');
+
+// ♻️ Reusable: Runs after express-validator checks, returns first error
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return sendError(res, 400, errors.array()[0].msg);
+  }
+  next();
+};
+
+>>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
 module.exports = validate;

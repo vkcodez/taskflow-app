@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ♻️ Reusable full-page loading spinner
 export const Spinner = ({ size = 'md' }) => {
   const sizes = { sm: 'h-5 w-5', md: 'h-8 w-8', lg: 'h-12 w-12' };
@@ -6,4 +7,14 @@ export const Spinner = ({ size = 'md' }) => {
       <div className={`animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-600 ${sizes[size]}`} />
     </div>
   );
+=======
+// ♻️ Reusable full-page loading spinner
+export const Spinner = ({ size = 'md' }) => {
+  const sizes = { sm: 'h-5 w-5', md: 'h-8 w-8', lg: 'h-12 w-12' };
+  return (
+    <div className="flex items-center justify-center">
+      <div className={`animate-spin rounded-full border-4 border-indigo-200 border-t-indigo-600 ${sizes[size]}`} />
+    </div>
+  );
+>>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
 };

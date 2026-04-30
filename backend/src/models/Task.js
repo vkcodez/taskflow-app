@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { taskDB } = require('../config/jsonDB');
 
 const taskSchema = {
@@ -42,3 +43,40 @@ const Task = {
 };
 
 module.exports = Task;
+=======
+const mongoose = require('mongoose');
+
+const taskSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: [true, 'Task title is required'],
+    trim: true,
+    maxlength: [100, 'Title cannot exceed 100 characters']
+  },
+  description: {
+    type: String,
+    trim: true,
+    maxlength: [500, 'Description cannot exceed 500 characters']
+  },
+  status: {
+    type: String,
+    enum: ['todo', 'in-progress', 'done'],
+    default: 'todo'
+  },
+  priority: {
+    type: String,
+    enum: ['low', 'medium', 'high'],
+    default: 'medium'
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
+}, { timestamps: true });
+
+// Index for fast user-specific queries
+taskSchema.index({ owner: 1, createdAt: -1 });
+
+module.exports = mongoose.model('Task', taskSchema);
+>>>>>>> c373036557a179238c89ebf5cfe37286a14e9aad
