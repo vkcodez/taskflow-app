@@ -1,9 +1,10 @@
 const { body } = require('express-validator');
+const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const generateToken = require('../utils/generateToken');
+const generateToken = require('../Utils/generateToken');
 const { sendSuccess, sendError } = require('../Utils/apiResponse');
 
-// Validation rules (exported so routes stay clean)
+// Validation rules
 exports.registerValidation = [
   body('name').trim().notEmpty().withMessage('Name is required'),
   body('email').isEmail().withMessage('Valid email required'),
@@ -18,7 +19,7 @@ exports.loginValidation = [
 exports.register = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
-    const existingUser = await User.findOne({ email });
+    const existingUser = User.findOne({ email });
     if (existingUser) return sendError(res, 409, 'Email already registered');
 
     const user = await User.create({ name, email, password });
@@ -34,8 +35,14 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email }).select('+password');
-    if (!user || !(await user.comparePassword(password))) {
+    const user = User.findOneWithPassword(email);
+    if (!user) {
+      return sendError(res, 401, 'Invalid email or password');
+    }
+    
+    // Compare password using bcrypt
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
       return sendError(res, 401, 'Invalid email or password');
     }
 

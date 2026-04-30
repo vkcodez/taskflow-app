@@ -12,9 +12,18 @@ const protect = async (req, res, next) => {
 
     const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
-
-    if (!req.user) return sendError(res, 401, 'User no longer exists.');
+    
+    // Find user by ID from JSON database
+    const user = User.findById(decoded.id);
+    if (!user) return sendError(res, 401, 'User no longer exists.');
+    
+    // Create clean user object without password
+    req.user = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role
+    };
     next();
   } catch (err) {
     sendError(res, 401, 'Invalid or expired token.');

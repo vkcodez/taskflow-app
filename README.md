@@ -101,17 +101,17 @@ webapp/
 ├── backend/src/
 │   ├── config/        # DB connection
 │   ├── controllers/   # Route logic
-│   ├── middleware/    # Auth, validation, errors
-│   ├── models/        # User, Task schemas
-│   ├── routes/        # API routes
-│   └── utils/         # Token, response helpers
+│   ├── middleware/   # Auth, validation, errors
+│   ├── models/       # User, Task schemas
+│   ├── routes/       # API routes
+│   └── utils/        # Token, response helpers
 └── frontend/src/
-    ├── components/    # Reusable UI + layout
-    ├── context/       # Auth state (AuthContext)
-    ├── hooks/         # useTasks
-    ├── pages/         # Login, Register, Dashboard, Profile
-    ├── services/      # Axios API calls
-    └── utils/         # Form validators
+    ├── components/   # Reusable UI + layout
+    ├── context/      # Auth state (AuthContext)
+    ├── hooks/        # useTasks
+    ├── pages/        # Login, Register, Dashboard, Profile
+    ├── services/     # Axios API calls
+    └── utils/        # Form validators
 ```
 
 ---
@@ -125,7 +125,7 @@ npm start       # production
 
 # Frontend
 npm run dev     # Vite dev server
-npm run build   # production build
+npm run build  # production build
 ```
 
 ---

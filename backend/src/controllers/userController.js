@@ -11,7 +11,7 @@ exports.updateProfile = async (req, res, next) => {
     const updates = {};
     allowedFields.forEach(field => { if (req.body[field]) updates[field] = req.body[field]; });
 
-    const user = await User.findByIdAndUpdate(req.user._id, updates, { new: true, runValidators: true });
+    const user = User.findByIdAndUpdate(req.user._id, updates);
     sendSuccess(res, 200, 'Profile updated', { user });
   } catch (err) { next(err); }
 };

@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const { userDB, taskDB } = require('./jsonDB');
 
 const connectDB = async () => {
   try {
-    const uri = process.env.MONGO_URI || process.env.DB_LOCAL_URI;
-    const conn = await mongoose.connect(uri);
-    console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+    // Initialize JSON database (files are created automatically by jsonDB.js)
+    console.log(`✅ JSON Database initialized at: ${__dirname}/../data/`);
+    return true;
   } catch (err) {
-    console.error(`❌ MongoDB connection error: ${err.message}`);
+    console.error(`❌ Database initialization error: ${err.message}`);
     process.exit(1);
   }
 };
